@@ -30,6 +30,7 @@ router.get('/users/:username', (req, res) => {
   const params = {
     TableName: table,
     KeyConditionExpression: "#un = :user",
+    ProjectionExpression: "#th, #ca",
     ExpressionAttributeNames: {
       "#un": "username",
       "#ca": "createdAt",
@@ -37,8 +38,7 @@ router.get('/users/:username', (req, res) => {
     },
     ExpressionAttributeValues: {
       ":user": req.params.username
-    },
-    ProjectionExpression: "#th, #ca"
+    }    
   };
 
   dynamodb.query(params, (err, data) => {
