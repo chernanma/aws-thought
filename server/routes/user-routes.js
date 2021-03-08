@@ -2,8 +2,9 @@ const express = require('express');
 const router = express.Router();
 const AWS = require("aws-sdk");
 const awsConfig = {
-  region: "us-east-2",
-  endpoint: "http://localhost:8000",
+  region: "us-east-2"
+    /* Removing endpoint so dynamodb service object will point to the web service and not the lcoal instance*/
+  // endpoint: "http://localhost:8000"
 
 };
 AWS.config.update(awsConfig);
